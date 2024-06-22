@@ -8,7 +8,6 @@ $A2 = $_POST['A3'];
 $A3 = $_POST['A4'];
 $A4 = $_POST['A5'];
 
-$namaLaptop = array();
 $totalPointAlternative = array();
 
 for ($i = 0; $i <= 4; $i++) {
@@ -56,6 +55,17 @@ for ($i = 0; $i <= 4; $i++) {
   $totalPointAlternative[] = $nilaiTotal;
 }
 
+$laptops = array();
+for ($i = 0; $i <= 4; $i++) {
+  $laptops[] = array(
+    'nama' => $namaLaptop[$i],
+    'nilaiTotal' => $totalPointAlternative[$i]
+  );
+}
+usort($laptops, function ($a, $b) {
+  return $b['nilaiTotal'] <=> $a['nilaiTotal'];
+});
+
 ?>
 
 <!DOCTYPE html>
@@ -81,30 +91,71 @@ for ($i = 0; $i <= 4; $i++) {
     <div class="row">
       <div class="col-md-12">
         <h1 class="text-center">Hasil Rekomendasi</h1>
-        <br>
+        <br><br>
         <p>Dari perhitungan dengan menggunakan metode <i>profile matching</i> didapatkan nilai total dari setiap
           alternatif.</p>
-        <table class="table w-50">
-          <thead class="table-info">
-            <tr>
-              <th class="text-center">Nama Laptop</th>
-              <th class="text-center">Nilai Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php for ($i = 0; $i <= 4; $i++) { ?>
+        <div class="d-flex justify-content-center mt-5">
+          <table class="table w-75">
+            <thead class="table-info">
               <tr>
-                <td><?= $namaLaptop[$i]; ?></td>
-                <td class="text-center"><?= str_replace('.', ',', number_format($totalPointAlternative[$i], 3)); ?></td>
+                <th class="text-center">Nama Laptop</th>
+                <th class="text-center">Nilai Total</th>
+                <th class="text-center">Ranking</th>
               </tr>
-            <?php } ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <?php $number = 1; ?>
+              <?php foreach ($laptops as $laptop) { ?>
+                <tr>
+                  <td><?= $laptop['nama']; ?></td>
+                  <td class="text-center"><?= str_replace('.', ',', number_format($laptop['nilaiTotal'], 3)); ?></td>
+                  <td class="text-center"><?= $number++; ?></td>
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
         <p class="h-4 fw-bold mt-5">Grafik Nilai Total</p>
+        <?php
+
+        $dataPoints = array(
+          array("y" => $totalPointAlternative[0], "label" => $namaLaptop[0]),
+          array("y" => $totalPointAlternative[1], "label" => $namaLaptop[1]),
+          array("y" => $totalPointAlternative[2], "label" => $namaLaptop[2]),
+          array("y" => $totalPointAlternative[3], "label" => $namaLaptop[3]),
+          array("y" => $totalPointAlternative[4], "label" => $namaLaptop[4]),
+        );
+
+        ?>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
       </div>
     </div>
   </main>
 
   <?php include ('component/footer.php'); ?>
+  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+  <script>
+  window.onload = function() {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+        text: "Total Nilai Alternatif"
+      },
+      axisY: {
+        title: "Total Nilai",
+      },
+      data: [{
+        type: "column",
+        yValueFormatString: "#,##0.## tonnes",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+      }]
+    });
+    chart.render();
+
+  }
+  </script>
+</body>
 
 </html>

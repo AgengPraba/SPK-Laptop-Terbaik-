@@ -41,8 +41,8 @@ $results = $db->select($sql);
                 <label class="fw-bold mb-2">Laptop 1:</label>
                 <select class="form-select" aria-label="Default select example" name="A1" required>
                   <?php foreach ($results as $result): ?>
-                    <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
-                    </option>
+                  <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
+                  </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -50,8 +50,8 @@ $results = $db->select($sql);
                 <label class="fw-bold mb-2">Laptop 2:</label>
                 <select class="form-select" aria-label="Default select example" name="A2" required>
                   <?php foreach ($results as $result): ?>
-                    <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
-                    </option>
+                  <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
+                  </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -59,8 +59,8 @@ $results = $db->select($sql);
                 <label class="fw-bold mb-2">Laptop 3:</label>
                 <select class="form-select" aria-label="Default select example" name="A3" required>
                   <?php foreach ($results as $result): ?>
-                    <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
-                    </option>
+                  <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
+                  </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -68,8 +68,8 @@ $results = $db->select($sql);
                 <label class="fw-bold mb-2">Laptop 4:</label>
                 <select class="form-select" aria-label="Default select example" name="A4" required>
                   <?php foreach ($results as $result): ?>
-                    <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
-                    </option>
+                  <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
+                  </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -77,8 +77,8 @@ $results = $db->select($sql);
                 <label class="fw-bold mb-2">Laptop 5:</label>
                 <select class="form-select" aria-label="Default select example" name="A5" required>
                   <?php foreach ($results as $result): ?>
-                    <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
-                    </option>
+                  <option value="<?php echo $result['id']; ?>"><?php echo $result['nama']; ?>
+                  </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -91,7 +91,7 @@ $results = $db->select($sql);
       </div>
     </div>
   </main>
-
+  <br><br><br>
   <?php include ('component/footer.php'); ?>
 
 </html>

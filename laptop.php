@@ -101,13 +101,13 @@ $results = $db->select($sql);
                   ; ?>
                   <td class="text-center"><a href="?del=<?= $result['id']; ?>" class="btn btn-sm btn-danger"
                       onclick="return confirm('Do you want to delete?')">Hapus</a></td>
-                <?php } else {
-                  ; ?>
-                  <td></td><?php
-                } ?>
+                <?php } else { ?>
+                  <td class="fw-lighter fst-italic text-center">default</td>
+                  <?php
+                }
+                ; ?>
               </tr>
               <?php
-
             endforeach;
             ?>
           </tbody>
@@ -125,7 +125,8 @@ $results = $db->select($sql);
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p class="text-info">Masukkan data dengan benar sesuai dengan spesifikasi laptop yang sebenar-benarnya agar
+          <p class="text-danger fw-lighter fst-italic">Masukkan data dengan benar sesuai dengan spesifikasi laptop yang
+            sebenar-benarnya agar
             hasil perankingan
             akurat!</p>
           <form action="" method="POST">
@@ -224,7 +225,7 @@ $results = $db->select($sql);
       </div>
     </div>
   </div>
-
+  <br><br><br>
   <?php include ('component/footer.php'); ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
