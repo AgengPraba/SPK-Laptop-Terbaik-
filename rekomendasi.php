@@ -74,7 +74,7 @@ usort($laptops, function ($a, $b) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPK Laptop Terbaik</title>
+  <title>mendingmana.com</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -84,7 +84,7 @@ usort($laptops, function ($a, $b) {
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
 </head>
 
-<body>
+<body class="bg-body-tertiary">
   <?php include ('component/header.php'); ?>
 
   <main class="container">
@@ -106,11 +106,11 @@ usort($laptops, function ($a, $b) {
             <tbody>
               <?php $number = 1; ?>
               <?php foreach ($laptops as $laptop) { ?>
-                <tr>
-                  <td><?= $laptop['nama']; ?></td>
-                  <td class="text-center"><?= str_replace('.', ',', number_format($laptop['nilaiTotal'], 3)); ?></td>
-                  <td class="text-center"><?= $number++; ?></td>
-                </tr>
+              <tr>
+                <td><?= $laptop['nama']; ?></td>
+                <td class="text-center"><?= str_replace('.', ',', number_format($laptop['nilaiTotal'], 3)); ?></td>
+                <td class="text-center"><?= $number++; ?></td>
+              </tr>
               <?php } ?>
             </tbody>
           </table>
